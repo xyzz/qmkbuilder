@@ -101,21 +101,6 @@ class SchematicsGenerator extends Generator {
 	fillTemplate() {
     const components = [];
 
-    // 8550 3300
-    const x = 8550;
-    const y = 8000;
-
-    this.addMicro(x, y, components);
-    this.addPadLabels(components);
-		this.addUSB(x, y, components);
-		this.addResistor(x, y, 'R3', components);
-		this.addResistor(x, y + 100, 'R4', components);
-    this.addCap(x, y, 'C8', components);
-    this.addVCC(x, y, 'PWR0101', components);
-
-
-    components.push(this.addNoConnect(1));
-
     this.renderMatrix(components);
 
 		return {
