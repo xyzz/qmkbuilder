@@ -1,5 +1,5 @@
 module.exports = `
 (sym_lib_table
-  (lib (name keyboard_parts)(type Legacy)(uri \${KIPRJMOD}/kicad_lib_tmk/keyboard_parts.lib)(options "")(descr ""))
+  (lib (name MX_Alps_Hybrid)(type Legacy)(uri \${KIPRJMOD}/Schematic_Library/MX_Alps_Hybrid.lib)(options "")(descr ""))
 )
 `;

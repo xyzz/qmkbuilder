@@ -39,7 +39,7 @@ class SchematicsGenerator extends Generator {
 
         // iterate through all the keys on this particular row/col
 				const keys = keyboard.wiring[row + ',' + col];
-        const x = 1500 + (col * 1000);
+        const x = 1400 + (col * 1000);
         const y = 1000 + (row * 1000);
 				if (keys) {
 					keys.forEach(key => {
@@ -62,12 +62,12 @@ class SchematicsGenerator extends Generator {
           lastX = x;
 
           // keeps track of the last switch position on this column
-          lastColY[col] = Math.max(lastColY[col], ly + 350);
+          lastColY[col] = Math.max(lastColY[col], ly + 300);
 				}
 			}
 
       // render the wiring from the diode to the row
-      components.push(ejs.render(wiringTpl, { x0: lx - 350, y0: ly + 400, x1: lastX - 350, y1: ly + 400 }));
+      components.push(ejs.render(wiringTpl, { x0: lx - 50, y0: ly + 400, x1: lastX - 50, y1: ly + 400 }));
 		}
 
     // render the wiring from the switch pad to the column
@@ -79,25 +79,6 @@ class SchematicsGenerator extends Generator {
     }
   }
 
-  getPadCoord(pad) {
-    const x = pad < 23 ? 7500 : 9650;
-    const y = pad < 23 ? 6950 + ((pad-1) * 100) : 9050 - ((pad-23) * 100);
-    return { x, y };
-  }
-
-  addPadLabel(pad, text) {
-		const glabelTpl = require('./templates/keyboard.sch/glabel');
-    const { x, y } = this.getPadCoord(pad);
-    const rotation = pad < 23 ? 0 : 2;
-    const data = { text, x, y, rotation };
-    return ejs.render(glabelTpl, { data });
-  }
-
-  addNoConnect(pad) {
-    const { x, y } = this.getPadCoord(pad);
-    return `NoConn ~ ${x} ${y}\n`;
-  }
-
 	fillTemplate() {
     const components = [];
 
@@ -107,52 +88,6 @@ class SchematicsGenerator extends Generator {
 			'components': components.join(''),
 		};
 	}
-
-  addVCC(x, y, name, components) {
-    const vccTpl = require('./templates/keyboard.sch/vcc');
-    const tstamp = genTstamp('vcc', 1);
-    const data = { x: x - 1700, y: y - 1150, tstamp, name };
-    components.push(ejs.render(vccTpl, { data }));
-  }
-
-  addCap(x, y, name, components) {
-    const capTpl = require('./templates/keyboard.sch/cap');
-    const tstamp = genTstamp('cap', 1);
-    const data = { x: x - 1250, y: y - 550, tstamp, name };
-    components.push(ejs.render(capTpl, { data }));
-  }
-
-  addMicro(x, y, components) {
-		const microTpl = require('./templates/keyboard.sch/micro');
-    const tstamp = genTstamp('micro', 1);
-    const data = { x, y, tstamp, name: 'U1' };
-    components.push(ejs.render(microTpl, { data }));
-  }
-
-  addUSB(_x, _y, components) {
-    const usbTpl = require('./templates/keyboard.sch/usb');
-    const tstamp = genTstamp('usb', 1);
-    const data = { x: _x - 2000, y: _y - 800, tstamp, name: 'J1' };
-    components.push(ejs.render(usbTpl, { data }));
-  }
-
-  addResistor(_x, _y, name, components) {
-    const resistorTpl = require('./templates/keyboard.sch/resistor');
-    const tstamp = genTstamp('resistor', 1);
-    const data = { x: _x - 1350, y: _y - 850, tstamp, name };
-    components.push(ejs.render(resistorTpl, { data }));
-  }
-
-  addPadLabels(components) {
-    [...Array(this.keyboard.rows)].forEach((_, r) => {
-      const pad = pinPadMap[this.keyboard.pins.row[r]];
-      components.push(this.addPadLabel(pad, `row${r}`));
-    });
-    [...Array(this.keyboard.cols)].forEach((_, c) => {
-      const pad = pinPadMap[this.keyboard.pins.col[c]];
-      components.push(this.addPadLabel(pad, `col${c}`));
-    });
-  }
 }
 
 module.exports = SchematicsGenerator;
