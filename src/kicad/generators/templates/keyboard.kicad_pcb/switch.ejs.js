@@ -4,7 +4,8 @@ module.exports = `(module MX_Alps_Hybrid:MX-<%= data.key.size.w %>U-NoLED (layer
   <%= data.x %>
   <%= data.y %>
   <%= data.rotation ? \` \${90-data.rotation}\` : \`\` %>)
-  (fp_text reference K_<%= data.key.name %> (at 0 3.175) (layer Dwgs.User)
+  (path <%= data.kicadReference(data.key.id + "1") %>)
+  (fp_text reference K_<%= data.key.id %> (at 0 3.175) (layer Dwgs.User)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_text value KEYSW (at 0 -7.9375) (layer Dwgs.User)

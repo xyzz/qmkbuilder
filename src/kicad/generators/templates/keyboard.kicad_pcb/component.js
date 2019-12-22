@@ -57,6 +57,11 @@ class Component {
     return this.nets.get(net);
   }
 
+  kicadReference(x) {
+    var pad = "00000000";
+    return "/" + (pad + x).slice(-pad.length);
+  }
+
   pad(n) {
     return this.pads[n-1];
   }
@@ -73,8 +78,9 @@ class Component {
   render(x, y, rotation) {
     const { id, tstamp, name } = this;
     const netForPad = this.netForPad.bind(this);
+    const kicadReference = this.kicadReference.bind(this);
     const additionalData = this.getAdditionalData(x, y, rotation);
-    const data = Object.assign({ id, tstamp, name, x, y, rotation, netForPad }, additionalData);
+    const data = Object.assign({ id, tstamp, name, x, y, rotation, netForPad, kicadReference }, additionalData);
     data.x = data.x + Component.options.initX;
     data.y = data.y + Component.options.initY;
 

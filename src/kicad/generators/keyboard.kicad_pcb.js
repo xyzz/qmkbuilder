@@ -25,8 +25,8 @@ class PCBGenerator extends Generator {
     const modules = [];
     const gap = 4;
 
-    [...Array(keyboard.cols+1)].forEach((_, i) => nets.add(`/col${i}`));
-    [...Array(keyboard.rows+1)].forEach((_, i) => nets.add(`/row${i}`));
+    [...Array(keyboard.cols+1)].forEach((_, i) => nets.add(`col${i}`));
+    [...Array(keyboard.rows+1)].forEach((_, i) => nets.add(`row${i}`));
 
     for (let row = 0; row < keyboard.rows; row ++) {
 			for (let col = 0; col < keyboard.cols; col ++) {
@@ -44,7 +44,7 @@ class PCBGenerator extends Generator {
             k.name = name;
             const theSwitch = new Switch(k, nets, this.leds);
             const diode     = new Diode(k, nets);
-            theSwitch.setPad(1, `/col${col}`);
+            theSwitch.setPad(1, `col${col}`);
             theSwitch.connectPads(2, diode, 2);
 
             modules.push(theSwitch.render(k.pos.x, k.pos.y, k.rotation));
