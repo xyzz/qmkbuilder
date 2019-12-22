@@ -56,8 +56,6 @@ class PCBGenerator extends Generator {
     }
 
     modules.push(new Frame(keyboard).render(gap));
-    modules.push(new Plane(keyboard, 'GND', 'F.Cu').render(gap + 1));
-    modules.push(new Plane(keyboard, 'GND', 'B.Cu').render(gap + 1));
 
 		return {
       'nets':        nets.array.map(n => `  ${nets.format(n)}`).join('\n'),
