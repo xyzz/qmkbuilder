@@ -1,6 +1,6 @@
 module.exports = `(module Diode_SMD:D_SOD-123 (layer B.Cu) (tedit 561B6A12) (tstamp <%= data.key.id.toString(16) %>1)
     (at
-    <%= data.x + 0.5 %>
+    <%= data.x - 1 %>
     <%= data.y + 0.5 %>
     <%= data.rotation %>)
     (descr SOD-123)
