@@ -163,6 +163,13 @@ class Compile extends React.Component {
 		});
 	}
 
+	generateKeyboardH() {
+		const state = this.props.state;
+		const keyboard = state.keyboard;
+		const KbHGenerator = require('files/generators/kb.h');
+		return new KbHGenerator(keyboard).generate();
+	}
+
 	render() {
 		const state = this.props.state;
 		const keyboard = state.keyboard;
@@ -174,6 +181,10 @@ class Compile extends React.Component {
 				onClick={ this.downloadKiCad }>
 				Download .zip
 			</button>
+			<div style={{ height: '1.5rem' }}/>
+			LAYOUT macro:
+			<div style={{ height: '0.5rem' }}/>
+			<textarea style={{ width: "100%", height: "300px" }} value={ this.generateKeyboardH() }></textarea>
 		</div>;
 	}
 
