@@ -29,20 +29,6 @@ class Wiring extends React.Component {
 				value={ keyboard.cols }
 				onChange={ v => keyboard.cols = v }/>
 			<div style={{ height: '1.5rem' }}/>
-			Specify the diode direction.
-			<div style={{ height: '0.5rem' }}/>
-			<select
-				value={ keyboard.settings.diodeDirection }
-				onChange={ e => keyboard.setSetting('diodeDirection', parseInt(e.target.value)) }>
-				<option value={ C.DIODE_COL2ROW }>Column to Row</option>
-				<option value={ C.DIODE_ROW2COL }>Row to Column</option>
-			</select>
-			<Help>
-				<strong>Column to Row</strong>: Marked end of diode towards row. Used by most PCBs and handwired builds (Recommended).
-				<br/>
-				<strong>Row to Column</strong>: Marked end of diode towards column. Used by Phantom TKL PCB. Not common.
-			</Help>
-			<div style={{ height: '1.5rem' }}/>
 			Change the position of the selected key in the matrix.
 			<div style={{ height: '0.5rem' }}/>
 

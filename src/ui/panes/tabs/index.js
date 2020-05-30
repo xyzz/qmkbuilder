@@ -44,31 +44,6 @@ class Tabs extends React.Component {
 				Wiring
 			</Tab>
 			<Tab
-				selected={ screen === C.SCREEN_PINS }
-				onClick={ this.switchTab(C.SCREEN_PINS) }>
-				Pins
-			</Tab>
-			<Tab
-				selected={ screen === C.SCREEN_KEYMAP }
-				onClick={ this.switchTab(C.SCREEN_KEYMAP) }>
-				Keymap
-			</Tab>
-			<Tab
-				selected={ screen === C.SCREEN_MACROS }
-				onClick={ this.switchTab(C.SCREEN_MACROS) }>
-				Macros
-			</Tab>
-			<Tab
-				selected={ screen === C.SCREEN_QUANTUM }
-				onClick={ this.switchTab(C.SCREEN_QUANTUM) }>
-				Quantum
-			</Tab>
-			<Tab
-				selected={ screen === C.SCREEN_SETTINGS }
-				onClick={ this.switchTab(C.SCREEN_SETTINGS) }>
-				Settings
-			</Tab>
-			<Tab
 				selected={ screen === C.SCREEN_COMPILE }
 				onClick={ this.switchTab(C.SCREEN_COMPILE) }>
 				Compile
