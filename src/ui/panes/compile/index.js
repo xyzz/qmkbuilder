@@ -184,7 +184,7 @@ class Compile extends React.Component {
 			<div style={{ height: '1.5rem' }}/>
 			LAYOUT macro:
 			<div style={{ height: '0.5rem' }}/>
-			<textarea style={{ width: "100%", height: "300px" }} value={ this.generateKeyboardH() }></textarea>
+			<textarea readOnly style={{ width: "100%", height: "300px" }} value={ this.generateKeyboardH() }></textarea>
 		</div>;
 	}
 
