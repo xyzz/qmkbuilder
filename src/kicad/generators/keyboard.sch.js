@@ -85,7 +85,7 @@ class SchematicsGenerator extends Generator {
     this.renderMatrix(components);
 
 		return {
-			'components': components.join(''),
+			'components': components.join('').trim(),
 		};
 	}
 }

@@ -29,5 +29,4 @@ Wire Wire Line
 Wire Wire Line
 	<%= x - 50 %> <%= y + 150 %> <%= x - 50 %> <%= y + 200 %>
 Connection ~ <%= x + 400 %> <%= y - 50 %>
-Connection ~ <%= x - 50 %> <%= y + 400 %>
-`;
+Connection ~ <%= x - 50 %> <%= y + 400 %>`;
